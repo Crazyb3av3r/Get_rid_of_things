@@ -17,19 +17,17 @@ from django.contrib import admin
 from django.urls import include, path
 
 
-from accounts.views import UserCreateView
-from register_thing.views import RegisterPage, LoginView, HomeView, ConfirmationView, ShowPage
+from accounts.views import UserCreateView, LoginView
+from register_thing.views import RegisterPage, HomeView, ConfirmationView, ShowPage
 
-# from register_things.views import ShowPage
-# from accounts.views import UserCreateView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('show/', ShowPage.as_view()),
+    path('show/', ShowPage.as_view(), name='login-user-page'),
     path('', HomeView.as_view(), name='home'),
     path('register/', RegisterPage.as_view()),
     path('create_user/', UserCreateView.as_view(), name='register'),
-    path('login/', include('django.contrib.auth.urls'), name='login'),
+    path('login/', LoginView.as_view(), name='login'),
     path('confirm/', ConfirmationView.as_view(), name='confirmation')
 ]

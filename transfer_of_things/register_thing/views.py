@@ -2,10 +2,9 @@ from django.shortcuts import render
 from django.views import View
 
 
-
 class ShowPage(View):
     def get(self, request):
-        return render(request, 'app/index.html')
+        return render(request, 'app/form.html')
 
 
 class RegisterPage(View):

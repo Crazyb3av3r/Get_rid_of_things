@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   const helpSection = document.querySelector(".help");
   if (helpSection !== null) {
+    console.log(helpSection)
     new Help(helpSection);
   }
 
@@ -250,6 +251,75 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   const form = document.querySelector(".form--steps");
   if (form !== null) {
+    console.log(form)
     new FormSteps(form);
   }
+  //Testing
+
+
+
+  // $(window).scroll = function() {
+  //     if ($(window).scrollTop() >= 300) {
+  //       $('.container--70').addClass('fixed-header')
+  //     }
+  //
+  // $(window).scroll()
+  // };
+
+// function scrollFunction() {
+//   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+//     document.getElementById("scroll-head").style.fontSize = "30px";
+//   } else {
+//     document.getElementById("scroll-head").style.fontSize = "90px";
+//   }
+// }
+
+
+  // class ScrollHeader {
+  //   constructor(form) {
+  //     this.form = form;
+  //     this.$nav = form.querySelector(".scroll-head");
+  //
+  //     this.init();
+  //   }
+  //
+  //   init() {
+  //     this.scrollFunction()
+  //   }
+  //
+  //   scrollFunction() {
+  //   if (this.$nav.scrollTop > 50 || this.$nav.documentElement.scrollTop > 50) {
+  //     this.$nav.style.fontSize = "30px";
+  //   } else {
+  //     this.$nav.style.fontSize = "90px";
+  //     }
+  // }
+  // }
+  // const movedContainer = document.querySelector(".header--main-page");
+  // console.log('witam')
+  // if (movedContainer !== null) {
+  //   console.log('Gra')
+  //   new ScrollHeader(movedContainer);
+  // }
+});
+// console.log('hello')
+// const stickyOffset = $('.scroll-head').offset().top;
+//
+//   $(window).scroll(function(){
+//   const sticky = $('.scroll-head'),
+//       scroll = $(window).scrollTop();
+//
+//   if (scroll >= stickyOffset) sticky.addClass('fixed-header');
+//   else sticky.removeClass('fixed-header');
+// });
+const wrap = document.getElementsByClassName("scroll-head");
+
+wrap.on("scroll", function(e) {
+
+  if (this.scrollTop > 147) {
+    wrap.addClass("fixed-header");
+  } else {
+    wrap.removeClass("fixed-header");
+  }
+
 });

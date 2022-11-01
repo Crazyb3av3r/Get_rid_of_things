@@ -1,5 +1,13 @@
 from django.shortcuts import render
 from django.views import View
+from .models import Donation, Institution
+
+
+def calculate_donations(obj):
+    summ = 0
+    for donation in obj:
+        summ += donation.quantity
+    return summ
 
 
 class ShowPage(View):
@@ -19,7 +27,14 @@ class LoginView(View):
 
 class HomeView(View):
     def get(self, request):
-        return render(request, 'app/index.html')
+        donations = Donation.objects.all()
+        institutions = Institution.objects.all().count()
+        sum_bugs = calculate_donations(donations)
+        context = {
+            'sum_of_bugs': sum_bugs,
+            'institutions_quantity': institutions
+        }
+        return render(request, 'app/index.html', context)
 
 
 class ConfirmationView(View):

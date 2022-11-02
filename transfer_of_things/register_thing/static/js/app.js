@@ -312,14 +312,3 @@ document.addEventListener("DOMContentLoaded", function() {
 //   if (scroll >= stickyOffset) sticky.addClass('fixed-header');
 //   else sticky.removeClass('fixed-header');
 // });
-const wrap = document.getElementsByClassName("scroll-head");
-
-wrap.on("scroll", function(e) {
-
-  if (this.scrollTop > 147) {
-    wrap.addClass("fixed-header");
-  } else {
-    wrap.removeClass("fixed-header");
-  }
-
-});

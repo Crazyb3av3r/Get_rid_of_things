@@ -28,11 +28,17 @@ class LoginView(View):
 class HomeView(View):
     def get(self, request):
         donations = Donation.objects.all()
-        institutions = Institution.objects.all().count()
+        institutions_count = Institution.objects.all().count()
         sum_bugs = calculate_donations(donations)
+        fundations = Institution.objects.filter(type=1)
+        organizacje_pozarzadowe = Institution.objects.filter(type=2)
+        zbiorki = Institution.objects.filter(type=3)
         context = {
             'sum_of_bugs': sum_bugs,
-            'institutions_quantity': institutions
+            'institutions_quantity': institutions_count,
+            'organizacje_pozarzadowe': organizacje_pozarzadowe,
+            'fundations': fundations,
+            'zbiorki': zbiorki,
         }
         return render(request, 'app/index.html', context)
 

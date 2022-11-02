@@ -24,12 +24,14 @@ class Institution(models.Model):
     type = models.IntegerField(choices=TYPE_CHOICES, default=1)
     categories = models.ManyToManyField(Category, related_name='category')
 
+    def get_categories(self):
+        return ', '.join([c.name for c in self.categories.all()])
+
 
 class Donation(models.Model):
     quantity = models.IntegerField()
     categories = models.ManyToManyField(Category, related_name='donation_category')
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
-    # czy pole street prawidlowe?
     street = models.TextField()
     # phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
     #                              message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")

@@ -1,6 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import View
-from .models import Donation, Institution
+from .models import Donation, Institution, Category
 
 
 def calculate_donations(obj):
@@ -12,7 +13,7 @@ def calculate_donations(obj):
 
 class ShowPage(View):
     def get(self, request):
-        return render(request, 'app/form.html')
+        return render(request, 'app/index.html')
 
 
 class RegisterPage(View):
@@ -43,6 +44,11 @@ class HomeView(View):
         return render(request, 'app/index.html', context)
 
 
-class ConfirmationView(View):
+# @login_required
+class AddDonation(View):
     def get(self, request):
-        return render(request, 'app/form-confirmation.html')
+        categories = Category.objects.all()
+        institutions = Institution.objects.all()
+        return render(request, 'app/form.html', {'categories': categories,
+                                                 'institutions': institutions
+                                                 })

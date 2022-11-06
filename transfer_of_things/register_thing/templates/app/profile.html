@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pl">
+
+{%  include 'app/header.html' %}
+
+  <body>
+    <header class="header--form-page">
+      <nav class="container container--70">
+        <ul class="nav--actions">
+            <li class="logged-user">
+              Witaj   {{ user.first_name }}
+              <ul class="dropdown">
+                <li><a href='{% url "profile" id=user.pk%}'>Profil</a></li>
+                <li><a href="#">Ustawienia</a></li>
+                <li><a href="#">Moje zbiórki</a></li>
+                <li><a href='{% url "logout" %}'>Wyloguj</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        <ul>
+          <li><a href="" class="btn btn--without-border active">Start</a></li>
+          <li><a href="{% url 'home' %}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+          <li><a href="{% url 'home' %}#about-us" class="btn btn--without-border">O nas</a></li>
+          <li><a href="{% url 'home' %}#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
+          <li><a href="{% url 'home' %}" class="btn btn--without-border">Przekaż dary</a></li>
+          <li><a href="{% url 'home' %}#contact" class="btn btn--without-border">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div class="slogan container container--90">
+          <h2>
+              <li>Imie: {{ user.first_name }}</li>
+              <li>Nazwisko: {{ user.last_name }}</li>
+              <li>Email: {{ user.email }}</li>
+          </h2>
+        <ul>
+          {% for i in args %}
+          {{ i }}
+          {% endfor %}
+        </ul>
+      </div>
+    </header>
+
+{% include 'app/footer.html' %}
+
+    <script src='{% static "js/app.js"%}'></script>
+  </body>
+</html>

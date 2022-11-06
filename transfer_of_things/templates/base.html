@@ -1,12 +1,18 @@
-<!--{% load static %}-->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="pl">
+{% include 'header.html' %}
 <body>
-{% block content %}
-{% endblock %}
+    {% block body-head %}
+        {% if user.first_name %}
+          {% include 'userlogin_header.html' %}
+        {% else %}
+          {% include 'landingpage_header.html' %}
+        {% endif %}
+    {% endblock body-head %}
+    {% block body-content %}
+    {% endblock body-content %}
 </body>
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}
 </html>
